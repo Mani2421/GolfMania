@@ -13,10 +13,11 @@ public class ShotCharger : MonoBehaviour
     public BallController ball;
 
     [HideInInspector] public float charge = 0f;
-    private bool charging = false;
+    public bool charging = false;
 
     void Update()
     {
+        if (chargeBarUI) chargeBarUI.enabled = charge > 0;
         // Begin charging
         if (Input.GetMouseButtonDown(0))
         {
