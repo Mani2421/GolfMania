@@ -23,7 +23,7 @@ public class ClubRailAimer : MonoBehaviour
         if (ball != null)
         {
             Vector3 offset = -ball.forward * distanceBehindBall;
-            transform.position = ball.position + offset + Vector3.up * 0.05f;
+            transform.position = ball.position + offset + Vector3.up * 0.7f;
         }
     }
 
@@ -37,7 +37,7 @@ public class ClubRailAimer : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
     }
 
-    // Returns the forward direction of the club (used for shooting)
+    // Returns the forward direction of the club
     public Vector3 GetAimDirection()
     {
         return transform.forward;
