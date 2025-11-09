@@ -8,7 +8,7 @@ public class ClubRailAimer : MonoBehaviour
     public float maxAngle = 70f;
 
     [Header("Auto-Alignment")]
-    public Transform ball;          // assign your Ball here
+    public Transform ball;
     public float distanceBehindBall = 0.4f; // how far behind the ball the rail sits
 
     private float currentAngle = 0f;
@@ -37,9 +37,7 @@ public class ClubRailAimer : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
     }
 
-    /// <summary>
-    /// Returns the forward direction of the club (used for shooting)
-    /// </summary>
+    // Returns the forward direction of the club (used for shooting)
     public Vector3 GetAimDirection()
     {
         return transform.forward;
