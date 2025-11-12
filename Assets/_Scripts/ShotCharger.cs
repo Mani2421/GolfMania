@@ -36,7 +36,7 @@ public class ShotCharger : MonoBehaviour
         }
 
         // Release shot
-        if (charging && Input.GetMouseButtonUp(0))
+        if ((charging && Input.GetMouseButtonUp(0)) || charge > 39f) // Automatically release charge once it's filled.
         {
             charging = false;
 
