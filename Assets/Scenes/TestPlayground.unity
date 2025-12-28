@@ -4578,7 +4578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2461902270753014701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,8 +5353,8 @@ MonoBehaviour:
   aimController: {fileID: 5264271511072212645}
   ballRb: {fileID: 644881143450348824}
   chargeFill: {fileID: 5046712961335426204}
-  maxCharge: 40
-  chargeSpeed: 25
+  maxCharge: 10
+  chargeSpeed: 5
 --- !u!23 &8577818057559400786
 MeshRenderer:
   m_ObjectHideFlags: 0
