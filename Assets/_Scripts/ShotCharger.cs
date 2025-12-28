@@ -11,6 +11,7 @@ public class ShotCharger : MonoBehaviour
     [Header("References")]
     public ClubRailAimer clubRailAimer;
     public BallController ball;
+    public Camera mainCamera;
 
     [HideInInspector] public float charge = 0f;
     public bool charging = false;
