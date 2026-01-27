@@ -4,7 +4,6 @@ using UnityEngine;
 public class AimIndicator : MonoBehaviour
 {
     public float length = 3f;
-
     private LineRenderer lr;
 
     void Awake()

@@ -23,7 +23,7 @@ public class GolfGameController : MonoBehaviour
     void Update()
     {
         HandleCharge();
-        HandleCameraReset();
+        //HandleCameraReset();
         
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -70,7 +70,7 @@ public class GolfGameController : MonoBehaviour
     }
 
 
-    void HandleCameraReset()
+    public void HandleCameraReset()
     {
         if (!shotFired) return;
 
@@ -80,7 +80,7 @@ public class GolfGameController : MonoBehaviour
         }
     }
 
-    void ResetTurn()
+    public void ResetTurn()
     {
         shotFired = false;
 

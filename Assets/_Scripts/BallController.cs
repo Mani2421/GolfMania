@@ -5,6 +5,7 @@ public class BallController : MonoBehaviour
 {
     public float stopVelocityThreshold = 0.05f;
 
+    public GolfGameController golfGameController;
     private Rigidbody rb;
     private Vector3 startPos;
     private Quaternion startRot;
@@ -33,6 +34,7 @@ public class BallController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         transform.position = startPos;
         transform.rotation = startRot;
+        golfGameController.HandleCameraReset();
     }
     
     void OnTriggerEnter(Collider other)
