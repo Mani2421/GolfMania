@@ -20,14 +20,14 @@ public class ShotCharger : MonoBehaviour
     {
         if (chargeBarUI) chargeBarUI.enabled = charge > 0;
         // Begin charging
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             charging = true;
             charge = 0f;
         }
 
         // Continue charging
-        if (charging && Input.GetMouseButton(0))
+        if (charging && Input.GetKey(KeyCode.E))
         {
             charge += chargeRate * Time.deltaTime;
             charge = Mathf.Clamp(charge, 0f, maxCharge);
@@ -37,7 +37,7 @@ public class ShotCharger : MonoBehaviour
         }
 
         // Release shot
-        if ((charging && Input.GetMouseButtonUp(0)) || charge > 39f) // Automatically release charge once it's filled.
+        if ((charging && Input.GetKeyUp(KeyCode.E)) || charge > 39f) // Automatically release charge once it's filled.
         {
             charging = false;
 

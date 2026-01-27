@@ -36,20 +36,20 @@ public class GolfGameController : MonoBehaviour
     {
         if (shotFired) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             charging = true;
             charge = 0;
         }
 
-        if (charging && Input.GetMouseButton(0))
+        if (charging && Input.GetKey(KeyCode.E))
         {
             charge += chargeSpeed * Time.deltaTime;
             charge = Mathf.Clamp(charge, 0, maxCharge);
             chargeFill.fillAmount = charge / maxCharge;
         }
 
-        if (charging && Input.GetMouseButtonUp(0))
+        if (charging && Input.GetKeyUp(KeyCode.E))
         {
             charging = false;
             FireShot();

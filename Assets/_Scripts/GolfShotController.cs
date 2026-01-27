@@ -22,13 +22,13 @@ public class GolfShotController : MonoBehaviour
 
     void HandleCharging()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             charging = true;
             charge = 0f;
         }
 
-        if (charging && Input.GetMouseButton(0))
+        if (charging && Input.GetKey(KeyCode.E))
         {
             charge += chargeSpeed * Time.deltaTime;
             charge = Mathf.Clamp(charge, 0f, maxCharge);
@@ -37,7 +37,7 @@ public class GolfShotController : MonoBehaviour
                 chargeFill.fillAmount = charge / maxCharge;
         }
 
-        if (charging && Input.GetMouseButtonUp(0))
+        if (charging && Input.GetKeyUp(KeyCode.E))
         {
             charging = false;
             Shoot();
