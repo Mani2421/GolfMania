@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GolfShotController : MonoBehaviour
 {
     [Header("References")]
-    public GolfAimController aimController;
+    public BallAimer ballAimer;
     public Rigidbody ballRb;
     public Image chargeFill;
 
@@ -49,7 +49,7 @@ public class GolfShotController : MonoBehaviour
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
 
-        Vector3 dir = aimController.GetAimDirection();
+        Vector3 dir = ballAimer.GetAimDirection();
         ballRb.AddForce(dir * charge, ForceMode.Impulse);
 
         charge = 0f;

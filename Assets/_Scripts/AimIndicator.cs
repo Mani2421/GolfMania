@@ -1,23 +1,26 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class AimIndicator : MonoBehaviour
 {
-    public LineRenderer lineRenderer;
-    public Transform ball;
-    private GolfAimController golfAimController;
-    public ShotCharger shotCharger;
-    public float lineLength = 5f;
+    public float length = 3f;
+
+    private LineRenderer lr;
+
+    void Awake()
+    {
+        lr = GetComponent<LineRenderer>();
+        lr.positionCount = 2;
+    }
 
     void Update()
     {
-        lineRenderer.enabled = shotCharger.charging;
-        if (lineRenderer == null || golfAimController == null || ball == null)
-            return;
+        lr.SetPosition(0, transform.position);
+        lr.SetPosition(1, transform.position + transform.forward * length);
+    }
 
-        Vector3 startPos = ball.position + Vector3.up * 0.05f; // slightly above ball
-        Vector3 endPos = startPos + golfAimController.GetAimDirection().normalized * lineLength;
-
-        lineRenderer.SetPosition(0, startPos);
-        lineRenderer.SetPosition(1, endPos);
+    public void SetVisible(bool visible)
+    {
+        lr.enabled = visible;
     }
 }

@@ -4,7 +4,9 @@ using Cinemachine;
 
 public class GolfGameController : MonoBehaviour
 {
-    public GolfAimController aim;
+    public BallAimer aimer;
+    public AimIndicator aimIndicator;
+
     public BallController ball;
     public Image chargeFill;
 
@@ -22,6 +24,12 @@ public class GolfGameController : MonoBehaviour
     {
         HandleCharge();
         HandleCameraReset();
+        
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ball.ResetBall();
+        }
     }
 
     void HandleCharge()
@@ -50,14 +58,17 @@ public class GolfGameController : MonoBehaviour
 
     void FireShot()
     {
-        ball.Shoot(aim.GetAimDirection(), charge);
+        ball.Shoot(aimer.GetAimDirection(), charge);
         chargeFill.fillAmount = 0;
         shotFired = true;
 
-        // Switch cameras
+        aimer.enabled = false;
+        aimIndicator.SetVisible(false);
+
         aimCam.Priority = 0;
         followCam.Priority = 10;
     }
+
 
     void HandleCameraReset()
     {
@@ -65,16 +76,20 @@ public class GolfGameController : MonoBehaviour
 
         if (!ball.IsMoving)
         {
-            Invoke(nameof(ResetTurn), 1.0f);
+            Invoke(nameof(ResetTurn), 5f);
         }
     }
 
     void ResetTurn()
     {
         shotFired = false;
-        aim.ResetAim();
+
+        aimer.ResetAim();
+        aimer.enabled = true;
+        aimIndicator.SetVisible(true);
 
         aimCam.Priority = 10;
         followCam.Priority = 0;
     }
+
 }

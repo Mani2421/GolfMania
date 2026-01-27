@@ -9,7 +9,7 @@ public class ShotCharger : MonoBehaviour
     public Image chargeBarUI;
 
     [Header("References")]
-    public ClubRailAimer clubRailAimer;
+    public BallAimer ballAimer;
     public BallController ball;
     public Camera mainCamera;
 
@@ -41,8 +41,8 @@ public class ShotCharger : MonoBehaviour
         {
             charging = false;
 
-            // Get shot direction from rail pivot
-            Vector3 aimDir = clubRailAimer.GetAimDirection();
+            // Get shot direction
+            Vector3 aimDir = ballAimer.GetAimDirection();
 
             // Fire the ball
             ball.Shoot(aimDir, charge);

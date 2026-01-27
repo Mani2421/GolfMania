@@ -14,7 +14,7 @@ public class BallController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = 20f; // Prevent camera chaos
+        rb.maxAngularVelocity = 20f;
 
         startPos = transform.position;
         startRot = transform.rotation;
@@ -34,4 +34,13 @@ public class BallController : MonoBehaviour
         transform.position = startPos;
         transform.rotation = startRot;
     }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hole"))
+        {
+            Debug.Log("Ball entered the hole!");
+        }
+    }
+
 }
