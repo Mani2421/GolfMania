@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProceduralTerrainGolf : MonoBehaviour
 {
     [Header("Terrain Settings")]
-    public int heightmapResolution = 129; // Must be 2^n + 1
+    public int heightmapResolution = 129;
     public float terrainSize = 20f;
     public float maxHeight = 1.5f;       // Max elevation
     public float perlinScale = 3f;       // Noise scale
@@ -46,7 +46,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     {
         float[,] heights = new float[heightmapResolution, heightmapResolution];
 
-        // Step 1: Generate Perlin noise
+        // Generate Perlin noise
         for (int x = 0; x < heightmapResolution; x++)
         {
             for (int z = 0; z < heightmapResolution; z++)
@@ -54,17 +54,17 @@ public class ProceduralTerrainGolf : MonoBehaviour
                 float nx = x / (float)heightmapResolution * perlinScale;
                 float nz = z / (float)heightmapResolution * perlinScale;
 
-                heights[x, z] = Mathf.PerlinNoise(nx, nz) * 0.5f; // gentle slopes
+                heights[x, z] = Mathf.PerlinNoise(nx, nz) * 0.5f;
             }
         }
 
-        // Step 2: Flatten Start and Hole areas
+        // Flatten Start and Hole areas
         FlattenArea(ref heights, ballStart.position, flatRadius);
         FlattenArea(ref heights, holeTarget.position, flatRadius);
 
         terrainData.SetHeights(0, 0, heights);
 
-        // Step 3: Spawn Obstacles
+        // Spawn Obstacles
         PlaceObstacles();
     }
 
@@ -113,7 +113,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     
     
 
-    // Optional: regenerate terrain at runtime
+    // regenerate terrain at runtime
     [ContextMenu("Regenerate Terrain")]
     public void Regenerate()
     {
