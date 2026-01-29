@@ -1,53 +1,64 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShotCharger : MonoBehaviour
+namespace _Scripts
 {
-    [Header("Charge Settings")]
-    public float maxCharge = 40f;
-    public float chargeRate = 20f;
-    public Image chargeBarUI;
-
-    [Header("References")]
-    public BallAimer ballAimer;
-    public BallController ball;
-    public Camera mainCamera;
-
-    [HideInInspector] public float charge = 0f;
-    public bool charging = false;
-
-    void Update()
+    public class ShotCharger : MonoBehaviour
     {
-        if (chargeBarUI) chargeBarUI.enabled = charge > 0;
-        // Begin charging
-        if (Input.GetKeyDown(KeyCode.E))
+        [Header("Charge Settings")]
+        public float maxCharge = 40f;
+        public float chargeRate = 20f;
+        public Image chargeBarUI;
+
+        [Header("References")]
+        public AimSystem aimSystem;
+        public BallController ball;
+
+        private float charge = 0f;
+        private bool charging = false;
+
+        public event Action<Vector3, float> OnShotFired; // Event for shooting
+
+        private void Update()
         {
-            charging = true;
-            charge = 0f;
+            HandleCharging();
         }
 
-        // Continue charging
-        if (charging && Input.GetKey(KeyCode.E))
+        private void HandleCharging()
         {
-            charge += chargeRate * Time.deltaTime;
-            charge = Mathf.Clamp(charge, 0f, maxCharge);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                charging = true;
+                charge = 0f;
+            }
+
+            if (charging && Input.GetKey(KeyCode.E))
+            {
+                charge += chargeRate * Time.deltaTime;
+                charge = Mathf.Clamp(charge, 0f, maxCharge);
+
+                if (chargeBarUI)
+                    chargeBarUI.fillAmount = charge / maxCharge;
+            }
+
+            if (charging && (Input.GetKeyUp(KeyCode.E) || charge >= maxCharge))
+            {
+                charging = false;
+                FireShot();
+            }
 
             if (chargeBarUI)
-                chargeBarUI.fillAmount = charge / maxCharge;
+                chargeBarUI.enabled = charge > 0;
         }
 
-        // Release shot
-        if ((charging && Input.GetKeyUp(KeyCode.E)) || charge > 39f) // Automatically release charge once it's filled.
+        private void FireShot()
         {
-            charging = false;
+            Vector3 aimDir = aimSystem.AimDirection;
 
-            // Get shot direction
-            Vector3 aimDir = ballAimer.GetAimDirection();
-
-            // Fire the ball
             ball.Shoot(aimDir, charge);
+            OnShotFired?.Invoke(aimDir, charge);
 
-            // Reset UI
             charge = 0f;
             if (chargeBarUI)
                 chargeBarUI.fillAmount = 0f;

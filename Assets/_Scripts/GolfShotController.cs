@@ -1,59 +1,62 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GolfShotController : MonoBehaviour
+namespace _Scripts
 {
-    [Header("References")]
-    public BallAimer ballAimer;
-    public Rigidbody ballRb;
-    public Image chargeFill;
-
-    [Header("Shot Settings")]
-    public float maxCharge = 40f;
-    public float chargeSpeed = 25f;
-
-    private float charge = 0f;
-    private bool charging = false;
-
-    void Update()
+    public class GolfShotController : MonoBehaviour
     {
-        HandleCharging();
-    }
+        [Header("References")]
+        public AimSystem aimSystem;
+        public Rigidbody ballRb;
+        public Image chargeFill;
 
-    void HandleCharging()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        [Header("Shot Settings")]
+        public float maxCharge = 40f;
+        public float chargeSpeed = 25f;
+
+        private float charge = 0f;
+        private bool charging = false;
+
+        private void Update()
         {
-            charging = true;
+            HandleCharging();
+        }
+
+        private void HandleCharging()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                charging = true;
+                charge = 0f;
+            }
+
+            if (charging && Input.GetKey(KeyCode.E))
+            {
+                charge += chargeSpeed * Time.deltaTime;
+                charge = Mathf.Clamp(charge, 0f, maxCharge);
+
+                if (chargeFill)
+                    chargeFill.fillAmount = charge / maxCharge;
+            }
+
+            if (charging && Input.GetKeyUp(KeyCode.E))
+            {
+                charging = false;
+                Shoot();
+            }
+        }
+
+        private void Shoot()
+        {
+            ballRb.velocity = Vector3.zero;
+            ballRb.angularVelocity = Vector3.zero;
+
+            Vector3 dir = aimSystem.AimDirection;
+            ballRb.AddForce(dir * charge, ForceMode.Impulse);
+
             charge = 0f;
-        }
-
-        if (charging && Input.GetKey(KeyCode.E))
-        {
-            charge += chargeSpeed * Time.deltaTime;
-            charge = Mathf.Clamp(charge, 0f, maxCharge);
-
             if (chargeFill)
-                chargeFill.fillAmount = charge / maxCharge;
+                chargeFill.fillAmount = 0f;
         }
-
-        if (charging && Input.GetKeyUp(KeyCode.E))
-        {
-            charging = false;
-            Shoot();
-        }
-    }
-
-    void Shoot()
-    {
-        ballRb.velocity = Vector3.zero;
-        ballRb.angularVelocity = Vector3.zero;
-
-        Vector3 dir = ballAimer.GetAimDirection();
-        ballRb.AddForce(dir * charge, ForceMode.Impulse);
-
-        charge = 0f;
-        if (chargeFill)
-            chargeFill.fillAmount = 0f;
     }
 }

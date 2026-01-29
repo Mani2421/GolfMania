@@ -1,48 +1,62 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class BallController : MonoBehaviour
+namespace _Scripts
 {
-    public float stopVelocityThreshold = 0.05f;
-
-    public GolfGameController golfGameController;
-    private Rigidbody rb;
-    private Vector3 startPos;
-    private Quaternion startRot;
-
-    public bool IsMoving => rb.velocity.magnitude > stopVelocityThreshold;
-
-    void Awake()
+    [RequireComponent(typeof(Rigidbody))]
+    public class BallController : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = 20f;
+        public float stopVelocityThreshold = 0.05f;
 
-        startPos = transform.position;
-        startRot = transform.rotation;
-    }
+        private Rigidbody rb;
+        private Vector3 startPos;
+        private Quaternion startRot;
 
-    public void Shoot(Vector3 dir, float force)
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.AddForce(dir * force, ForceMode.Impulse);
-    }
+        public event Action OnStopped;      // Event triggered when ball stops
+        public event Action OnHoleEntered;  // Event triggered when ball hits the hole
 
-    public void ResetBall()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        transform.position = startPos;
-        transform.rotation = startRot;
-        golfGameController.HandleCameraReset();
-    }
-    
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Hole"))
+        public bool IsMoving => rb.velocity.magnitude > stopVelocityThreshold;
+
+        void Awake()
         {
-            Debug.Log("Ball entered the hole!");
+            rb = GetComponent<Rigidbody>();
+            rb.maxAngularVelocity = 20f;
+
+            startPos = transform.position;
+            startRot = transform.rotation;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!IsMoving && rb.IsSleeping())
+            {
+                OnStopped?.Invoke();
+            }
+        }
+
+        public void Shoot(Vector3 direction, float force)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.AddForce(direction * force, ForceMode.Impulse);
+        }
+
+        public void ResetBall()
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            transform.position = startPos;
+            transform.rotation = startRot;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Hole"))
+            {
+                OnHoleEntered?.Invoke();
+                Debug.Log("Ball entered the hole!");
+            }
         }
     }
-
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &470811251310234098
+--- !u!1 &988942230633440882
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 676189375538316559}
-  - component: {fileID: 5391660300761875403}
+  - component: {fileID: 6951362242390394038}
+  - component: {fileID: 7794738045428791669}
+  - component: {fileID: 1891973703877564485}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &676189375538316559
+--- !u!4 &6951362242390394038
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470811251310234098}
+  m_GameObject: {fileID: 988942230633440882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.201102, y: 0.59203684, z: 16.47077}
@@ -32,15 +33,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5391660300761875403
+--- !u!114 &7794738045428791669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470811251310234098}
+  m_GameObject: {fileID: 988942230633440882}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7227cfb9c8515438e8f05b5f36ab0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1891973703877564485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988942230633440882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaca95c4dc2039d459b1bd2750384b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimer: {fileID: 0}
+  aimIndicator: {fileID: 0}
+  ball: {fileID: 0}
+  chargeFill: {fileID: 0}
+  aimCam: {fileID: 0}
+  followCam: {fileID: 0}
+  maxCharge: 40
+  chargeSpeed: 25
