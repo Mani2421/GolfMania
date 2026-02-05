@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightmapResolution: 129
-  terrainSize: 20
-  maxHeight: 1.5
-  perlinScale: 3
+  terrainSize: 50
+  maxHeight: 5
+  perlinScale: 5
   seed: 0
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
@@ -119,7 +119,7 @@ MonoBehaviour:
   holePosition: {x: 18, y: 0, z: 18}
   obstaclePrefab: {fileID: 4435620614026906646, guid: 1239134ca621e6643a940ebcfb98c1b8,
     type: 3}
-  obstacleCount: 10
+  obstacleCount: 3
   obstacleHeightOffset: 0.1
   minDistanceFromTargets: 2
   isChained: 0

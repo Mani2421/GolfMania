@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts
@@ -26,12 +27,21 @@ namespace _Scripts
             {
                 ResetTurn();
             }
+
+            HandleCameraRotation();
         }
 
         private void Start()
         {
             //ball.transform.position = proceduralTerrainGolf.ballStart.transform.position;
         }
+
+        void HandleCameraRotation()
+        {
+            //Mathf.Lerp(aimCam.transform.rotation.x, aimSystem.AimDirection.x, 3f);
+            Debug.Log("Aim Direction: " + aimSystem.AimDirection.x);
+        }
+
 
         private void OnEnable()
         {

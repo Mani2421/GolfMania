@@ -4,16 +4,16 @@ using System.Collections.Generic;
 public class GolfTerrainManager : MonoBehaviour
 {
     [Header("Terrain Prefab")]
-    public GameObject terrainPrefab; // Your terrain with ProceduralTerrainGolf component
+    public GameObject terrainPrefab;
 
     [Header("Course Settings")]
-    public int numberOfHoles = 3;
-    public float terrainSpacing = 0f; // Gap between terrains (usually 0 for seamless)
+    public int numberOfTerrains = 3;
+    public float terrainSpacing = 0f;
     public Vector3 chainDirection = Vector3.right; // Direction to place next terrain
 
     [Header("Generation")]
     public bool generateOnStart = true;
-    public int startSeed = 0; // 0 for random
+    public int startSeed = 0; // 0 is random
 
     private List<ProceduralTerrainGolf> terrains = new List<ProceduralTerrainGolf>();
 
@@ -46,15 +46,17 @@ public class GolfTerrainManager : MonoBehaviour
         float terrainSize = terrainScript.terrainSize;
         Vector3 offset = chainDirection.normalized * (terrainSize + terrainSpacing);
 
-        for (int i = 0; i < numberOfHoles; i++)
+        for (int i = 0; i < numberOfTerrains; i++)
         {
             Vector3 position = transform.position + (offset * i);
             GameObject terrainObj = Instantiate(terrainPrefab, position, Quaternion.identity, transform);
-            terrainObj.name = $"Terrain_Hole_{i + 1}";
+            terrainObj.name = $"Terrain{i + 1}";
+            // Layer used for cam collision
+            int terrainLayer = LayerMask.NameToLayer("Terrain");
+            terrainObj.layer = terrainLayer;
 
             ProceduralTerrainGolf terrain = terrainObj.GetComponent<ProceduralTerrainGolf>();
             
-            // Set unique seed for each terrain if start seed is specified
             if (startSeed != 0)
             {
                 terrain.seed = startSeed + i;
@@ -69,7 +71,7 @@ public class GolfTerrainManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Generated {numberOfHoles} terrain pieces for the golf course!");
+        Debug.Log($"Generated {numberOfTerrains} terrain pieces for the golf course!");
     }
 
     [ContextMenu("Clear Course")]

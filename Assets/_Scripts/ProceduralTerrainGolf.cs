@@ -9,7 +9,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     public float terrainSize = 20f;
     public float maxHeight = 1.5f;
     public float perlinScale = 3f;
-    public int seed = 0; // Set to 0 for random seed
+    public int seed = 0; // 0 is random seed
 
     [Header("Golf Hole Prefabs")]
     public GameObject startPrefab;
@@ -54,7 +54,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
 
         terrain.terrainData = terrainData;
         
-        // CRITICAL: Add TerrainCollider component if not present
+        // Add TerrainCollider component if not present
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         if (terrainCollider == null)
         {
@@ -67,7 +67,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
 
     void GenerateTerrain()
     {
-        // Set random seed if specified
+        // Set random seed if it's set to 0, which is the default
         if (seed != 0)
         {
             Random.InitState(seed);
@@ -194,7 +194,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
         return new Vector3(worldHole.x, y, worldHole.z);
     }
     
-    // Add this method to ProceduralTerrainGolf if you want smooth edges
+    // TODO: FIX THIS
     void BlendEdges(ref float[,] heights, bool blendRight, bool blendLeft, bool blendForward, bool blendBack)
     {
         int res = heightmapResolution;
