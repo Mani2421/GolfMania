@@ -28,6 +28,11 @@ namespace _Scripts
                 ResetTurn();
             }
 
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                ball.transform.position = proceduralTerrainGolf.GetStartWorldPosition();
+            }
+
             HandleCameraRotation();
         }
 
@@ -38,8 +43,8 @@ namespace _Scripts
 
         void HandleCameraRotation()
         {
-            //Mathf.Lerp(aimCam.transform.rotation.x, aimSystem.AimDirection.x, 3f);
-            Debug.Log("Aim Direction: " + aimSystem.AimDirection.x);
+            // Mathf.Lerp(aimCam.transform.rotation.x, aimSystem.AimDirection.x, 3f);
+            // Debug.Log("Aim Direction: " + aimSystem.AimDirection.x);
         }
 
 
@@ -65,7 +70,7 @@ namespace _Scripts
             aimSystem.SetIndicatorVisible(false);
 
             aimCam.Priority = 0;
-            followCam.Priority = 10;
+            followCam.Priority = 1;
         }
 
         private void HandleBallStopped()
@@ -89,7 +94,7 @@ namespace _Scripts
             aimSystem.enabled = true;
             aimSystem.SetIndicatorVisible(true);
 
-            aimCam.Priority = 10;
+            aimCam.Priority = 1;
             followCam.Priority = 0;
         }
     }
