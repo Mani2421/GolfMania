@@ -9,7 +9,7 @@ public class GolfTerrainManager : MonoBehaviour
     [Header("Course Settings")]
     public int numberOfTerrains = 3;
     public float terrainSpacing = 0f;
-    public Vector3 chainDirection = Vector3.right; // Direction to place next terrain
+    public Vector3 chainDirection = Vector3.forward; // Direction to place next terrain
 
     [Header("Generation")]
     public bool generateOnStart = true;
