@@ -30,6 +30,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     public ProceduralTerrainGolf nextTerrain;
     
     [Header("Materials")]
+    public List<Material> randomTerrainMaterialList;
     public Material terrainMaterial;
 
     private Terrain terrain;
@@ -47,10 +48,10 @@ public class ProceduralTerrainGolf : MonoBehaviour
         terrainData.heightmapResolution = heightmapResolution;
         terrainData.size = new Vector3(terrainSize, maxHeight, terrainSize);
         
-        if (terrainMaterial != null)
-        {
-            terrain.materialTemplate = terrainMaterial;
-        }
+//        if (terrainMaterial != null)
+//        {
+            terrain.materialTemplate = GetRandomMaterials();
+//        }
 
         terrain.terrainData = terrainData;
         
@@ -176,6 +177,15 @@ public class ProceduralTerrainGolf : MonoBehaviour
             GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity, transform);
             spawnedObstacles.Add(obstacle);
         }
+    }
+
+    private Material GetRandomMaterials()
+    {
+        int randomMaterial = Random.Range(0, randomTerrainMaterialList.Count);
+
+        terrainMaterial = randomTerrainMaterialList[randomMaterial];
+
+        return terrainMaterial;
     }
 
     // Get the world position of the start

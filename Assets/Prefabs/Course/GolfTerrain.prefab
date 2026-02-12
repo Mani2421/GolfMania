@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightmapResolution: 129
-  terrainSize: 50
+  terrainSize: 100
   maxHeight: 5
-  perlinScale: 5
+  perlinScale: 3
   seed: 0
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
@@ -124,4 +124,7 @@ MonoBehaviour:
   minDistanceFromTargets: 2
   isChained: 0
   nextTerrain: {fileID: 0}
+  randomTerrainMaterialList:
+  - {fileID: 2100000, guid: ed0666338014955488862f7d87e0d9aa, type: 2}
+  - {fileID: 2100000, guid: c83700c3ba5cf5e42a8af018f6fd489a, type: 2}
   terrainMaterial: {fileID: 2100000, guid: f2955c37fe4a8854394c26ad8e82c9bc, type: 2}

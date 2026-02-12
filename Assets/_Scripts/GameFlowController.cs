@@ -22,7 +22,7 @@ namespace _Scripts
 
         private void Update()
         {
-            // DEBUG
+            // TODO: MAYBE MAKE A DEBUG MANAGER FOR TESTING
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ResetTurn();
@@ -32,19 +32,11 @@ namespace _Scripts
             {
                 ball.transform.position = proceduralTerrainGolf.GetStartWorldPosition();
             }
-
-            HandleCameraRotation();
         }
 
         private void Start()
         {
-            //ball.transform.position = proceduralTerrainGolf.ballStart.transform.position;
-        }
-
-        void HandleCameraRotation()
-        {
-            // Mathf.Lerp(aimCam.transform.rotation.x, aimSystem.AimDirection.x, 3f);
-            // Debug.Log("Aim Direction: " + aimSystem.AimDirection.x);
+            // TODO: On level start teleport the ball to start position.
         }
 
 
@@ -79,9 +71,9 @@ namespace _Scripts
 
             ResetTurn();
         }
-
         private void HandleHoleEntered()
         {
+            // TODO: HANDLE PLAYER SCORE HERE.
             Debug.Log("Player scored!");
         }
 
