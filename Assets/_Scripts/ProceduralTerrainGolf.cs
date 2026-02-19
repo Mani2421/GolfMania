@@ -96,7 +96,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
         {
             // Determine which edges to blend based on chain direction
             // This assumes terrains are chained horizontally to the right
-            BlendEdges(ref heights, blendLeft: true, blendRight: true, blendForward: true, blendBack: true);
+            BlendEdges(ref heights, blendLeft: false, blendRight: true, blendForward: false, blendBack: false);
        }
 
         terrainData.SetHeights(0, 0, heights);
@@ -208,19 +208,19 @@ public class ProceduralTerrainGolf : MonoBehaviour
     void BlendEdges(ref float[,] heights, bool blendRight, bool blendLeft, bool blendForward, bool blendBack)
     {
         int res = heightmapResolution;
-        int blendWidth = 10; // Number of samples to blend
+        int blendWidth = 100; // Number of samples to blend
 
         for (int i = 0; i < blendWidth; i++)
         {
             float blend = i / (float)blendWidth; // 0 to 1
         
-//            if (blendRight)
-//            {
+            if (blendRight)
+            {
                 Debug.Log("Blended?");
                 for (int z = 0; z < res; z++)
                     heights[res - 1 - i, z] = Mathf.Lerp(0.5f, heights[res - 1 - i, z], blend);
             }
-//        }
+        }
     }
 
     // Chain this terrain to another

@@ -107,13 +107,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightmapResolution: 129
-  terrainSize: 100
-  maxHeight: 5
+  terrainSize: 200
+  maxHeight: 10
   perlinScale: 3
   seed: 0
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
-  holePrefab: {fileID: 3116945050812715443, guid: b265d45b737be274fb9c2e13069beab8,
+  holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
     type: 3}
   startPosition: {x: 2, y: 0, z: 2}
   holePosition: {x: 18, y: 0, z: 18}
