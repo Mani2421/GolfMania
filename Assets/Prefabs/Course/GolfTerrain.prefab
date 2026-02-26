@@ -107,33 +107,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightmapResolution: 257
-  terrainSize: 20
-  maxHeight: 1.5
+  terrainSize: 30
+  maxHeight: 2.5
   noiseLayers:
-  - scale: 4
-    amplitude: 0.6
-    octaves: 3
-    persistence: 0.5
+  - scale: 5
+    amplitude: 0.5
+    octaves: 2
+    persistence: 0.6
     offset: {x: 0, y: 0}
-  - scale: 25
-    amplitude: 0.08
+  - scale: 15
+    amplitude: 0.2
+    octaves: 1
+    persistence: 0.4
+    offset: {x: 0, y: 0.02}
+  - scale: 30
+    amplitude: 0.05
     octaves: 1
     persistence: 0.3
-    offset: {x: 0, y: 0.02}
-  - scale: 20
-    amplitude: 0.1
-    octaves: 1
-    persistence: 0.5
     offset: {x: 0, y: 0}
   smoothTerrain: 1
-  smoothingPasses: 3
+  smoothingPasses: 4
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
   holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
     type: 3}
   startPosition: {x: 18.28, y: 0, z: 2}
   holePosition: {x: 18, y: 0, z: 18}
-  flattenRadius: 2.5
+  flattenRadius: 1.8
   flattenCurve:
     serializedVersion: 2
     m_Curve:
@@ -167,7 +167,8 @@ MonoBehaviour:
   nextTerrain: {fileID: 0}
   previousTerrain: {fileID: 0}
   chainIndex: 0
-  terrainMaterial: {fileID: 2100000, guid: 819f33e97450f7648b451ffed5bc5900, type: 2}
-  terrainPhysicsMaterial: {fileID: 0}
+  terrainMaterial: {fileID: 2100000, guid: 45eb7efec0c8f504285b382733758e52, type: 2}
+  terrainPhysicsMaterial: {fileID: 13400000, guid: a3bc99e42169ef64ebabcaf6372a8003,
+    type: 2}
   showDebugGizmos: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}

@@ -402,8 +402,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429948636}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18875057, y: 0.68144935, z: -0.18875057, w: 0.68144935}
-  m_LocalPosition: {x: -5.0000005, y: 8.783, z: 0.00000059604645}
+  m_LocalRotation: {x: 0.26497832, y: 0.38527414, z: -0.11650995, w: 0.87622815}
+  m_LocalPosition: {x: 195.42555, y: 9.416967, z: -356.77277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,7 +548,7 @@ TerrainCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967368584}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a3bc99e42169ef64ebabcaf6372a8003, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainPrefab: {fileID: 7785039639266981894, guid: bc727cf393ec7ae4392c6a1a10d09746,
     type: 3}
-  numberOfTerrains: 1
+  numberOfTerrains: 3
   terrainSpacing: 0
   chainDirection: {x: 1, y: 0, z: 0}
   generateOnStart: 1
@@ -1514,8 +1514,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5035656335839605903}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18875057, y: 0.68144935, z: -0.18875057, w: 0.68144935}
-  m_LocalPosition: {x: -5.0000005, y: 8.783, z: 0.00000059604645}
+  m_LocalRotation: {x: 0.26497832, y: 0.38527414, z: -0.11650995, w: 0.87622815}
+  m_LocalPosition: {x: 195.42555, y: 9.416967, z: -356.77277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2067,8 +2067,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027042267178706217}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5.783, z: 0}
+  m_LocalRotation: {x: -0.023591805, y: -0.40240473, z: 0.0104663065, w: -0.91509795}
+  m_LocalPosition: {x: 199.0292, y: 6.161627, z: -353.46713}
   m_LocalScale: {x: 0.42, y: 0.42, z: 0.42}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2091,8 +2091,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359959640228061263}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38267356, y: -0.0066519026, z: 0.0027553022, w: 0.9238556}
-  m_LocalPosition: {x: 0.07199756, y: 10.783, z: -4.9994817}
+  m_LocalRotation: {x: 0.09815602, y: 0.8929719, z: -0.3698815, w: 0.23696929}
+  m_LocalPosition: {x: 196.55008, y: 11.161627, z: -349.12503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2311,7 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCharge: 40
   chargeRate: 20
-  chargeBarUI: {fileID: 2713118815428032054}
+  chargeBarUI: {fileID: 0}
   aimSystem: {fileID: 9027042267178706218}
   ball: {fileID: 8006286789482075580}
 --- !u!114 &9027042267178706221
