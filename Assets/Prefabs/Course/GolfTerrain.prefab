@@ -106,25 +106,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14db57cd7e3b8945a1704eecb01ee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightmapResolution: 129
-  terrainSize: 200
+  heightmapResolution: 513
+  terrainSize: 25
   maxHeight: 10
-  perlinScale: 3
-  seed: 0
+  noiseLayers:
+  - scale: 3
+    amplitude: 1
+    octaves: 4
+    persistence: 0.5
+    offset: {x: 0, y: 0}
+  - scale: 10
+    amplitude: 0.3
+    octaves: 2
+    persistence: 0.5
+    offset: {x: 0, y: 0}
+  - scale: 20
+    amplitude: 0.1
+    octaves: 1
+    persistence: 0.5
+    offset: {x: 0, y: 0}
+  generateHills: 0
+  hillDensity: 0.3
+  generateValleys: 0
+  valleyDensity: 0.2
+  smoothTerrain: 1
+  smoothingPasses: 2
+  terrainType: 0
+  createGradualSlope: 1
+  slopeAngle: 5
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
   holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
     type: 3}
-  startPosition: {x: 2, y: 0, z: 2}
+  startPosition: {x: 18.28, y: 0, z: 2}
   holePosition: {x: 18, y: 0, z: 18}
-  obstaclePrefab: {fileID: 4435620614026906646, guid: 1239134ca621e6643a940ebcfb98c1b8,
-    type: 3}
+  flattenRadius: 2
+  flattenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  generateBunkers: 1
+  bunkerCount: 3
+  bunkerDepth: 0.3
+  bunkerSize: 2
+  bunkerPrefab: {fileID: 0}
+  generateWaterHazards: 0
+  waterHazardCount: 1
+  waterDepth: 0.5
+  waterPrefab: {fileID: 0}
+  obstaclePrefabs: []
   obstacleCount: 3
   obstacleHeightOffset: 0.1
   minDistanceFromTargets: 2
+  minDistanceBetweenObstacles: 1.5
   isChained: 0
   nextTerrain: {fileID: 0}
-  randomTerrainMaterialList:
-  - {fileID: 2100000, guid: ed0666338014955488862f7d87e0d9aa, type: 2}
-  - {fileID: 2100000, guid: c83700c3ba5cf5e42a8af018f6fd489a, type: 2}
-  terrainMaterial: {fileID: 2100000, guid: f2955c37fe4a8854394c26ad8e82c9bc, type: 2}
+  previousTerrain: {fileID: 0}
+  chainIndex: 0
+  terrainMaterial: {fileID: 2100000, guid: 819f33e97450f7648b451ffed5bc5900, type: 2}
+  terrainPhysicsMaterial: {fileID: 0}
+  showDebugGizmos: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}

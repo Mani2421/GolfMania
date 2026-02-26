@@ -57,10 +57,10 @@ public class GolfTerrainManager : MonoBehaviour
 
             ProceduralTerrainGolf terrain = terrainObj.GetComponent<ProceduralTerrainGolf>();
             
-            if (startSeed != 0)
-            {
-                terrain.seed = startSeed + i;
-            }
+            // if (startSeed != 0)
+            // {
+            //     terrain.seed = startSeed + i;
+            // }
 
             terrains.Add(terrain);
 
