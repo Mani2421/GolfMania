@@ -37,6 +37,7 @@ namespace _Scripts
         private void Start()
         {
             // TODO: On level start teleport the ball to start position.
+            proceduralTerrainGolf = FindFirstObjectByType<ProceduralTerrainGolf>();
         }
 
 
