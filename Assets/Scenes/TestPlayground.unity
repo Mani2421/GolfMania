@@ -403,8 +403,13 @@ Transform:
   m_GameObject: {fileID: 429948636}
   serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalRotation: {x: 0.26497832, y: 0.38527414, z: -0.11650995, w: 0.87622815}
   m_LocalPosition: {x: 195.42555, y: 9.416967, z: -356.77277}
+=======
+  m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
+  m_LocalPosition: {x: 195.19226, y: 3.3369522, z: -347.7334}
+>>>>>>> Stashed changes
 =======
   m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
   m_LocalPosition: {x: 195.19226, y: 3.3369522, z: -347.7334}
@@ -2003,8 +2008,13 @@ Transform:
   m_GameObject: {fileID: 5035656335839605903}
   serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalRotation: {x: 0.26497832, y: 0.38527414, z: -0.11650995, w: 0.87622815}
   m_LocalPosition: {x: 195.42555, y: 9.416967, z: -356.77277}
+=======
+  m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
+  m_LocalPosition: {x: 195.19226, y: 3.3369522, z: -347.7334}
+>>>>>>> Stashed changes
 =======
   m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
   m_LocalPosition: {x: 195.19226, y: 3.3369522, z: -347.7334}
@@ -2562,8 +2572,13 @@ Transform:
   m_GameObject: {fileID: 9027042267178706217}
   serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0.023591805, y: -0.40240473, z: 0.0104663065, w: -0.91509795}
   m_LocalPosition: {x: 199.0292, y: 6.161627, z: -353.46713}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 195.19226, y: 0.3369522, z: -342.7334}
+>>>>>>> Stashed changes
 =======
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 195.19226, y: 0.3369522, z: -342.7334}
@@ -2591,8 +2606,13 @@ Transform:
   m_GameObject: {fileID: 359959640228061263}
   serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalRotation: {x: 0.09815602, y: 0.8929719, z: -0.3698815, w: 0.23696929}
   m_LocalPosition: {x: 196.55008, y: 11.161627, z: -349.12503}
+=======
+  m_LocalRotation: {x: 0.09909908, y: 0.8923647, z: -0.3696294, w: 0.23924643}
+  m_LocalPosition: {x: 192.69101, y: 5.336952, z: -338.404}
+>>>>>>> Stashed changes
 =======
   m_LocalRotation: {x: 0.09909908, y: 0.8923647, z: -0.3696294, w: 0.23924643}
   m_LocalPosition: {x: 192.69101, y: 5.336952, z: -338.404}
