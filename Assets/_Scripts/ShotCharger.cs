@@ -9,7 +9,7 @@ namespace _Scripts
         [Header("Charge Settings")]
         public float maxCharge = 40f;
         public float chargeRate = 20f;
-        public Image chargeBarUI;
+        public Slider chargeBarUI;
 
         [Header("References")]
         public AimSystem aimSystem;
@@ -31,6 +31,8 @@ namespace _Scripts
             {
                 charging = true;
                 charge = 0f;
+                if (aimSystem)
+                    aimSystem.SetChargePreview(charge, maxCharge);
             }
 
             if (charging && Input.GetKey(KeyCode.E))
@@ -39,7 +41,16 @@ namespace _Scripts
                 charge = Mathf.Clamp(charge, 0f, maxCharge);
 
                 if (chargeBarUI)
-                    chargeBarUI.fillAmount = charge / maxCharge;
+                {
+                    chargeBarUI.value = charge / maxCharge;
+
+                    Image fillImage = chargeBarUI.fillRect ? chargeBarUI.fillRect.GetComponent<Image>() : null;
+                    if (fillImage)
+                        fillImage.color = Color.Lerp(Color.green, Color.red, charge / maxCharge);
+                }
+
+                if (aimSystem)
+                    aimSystem.SetChargePreview(charge, maxCharge);
             }
 
             if (charging && (Input.GetKeyUp(KeyCode.E) || charge >= maxCharge))
@@ -49,7 +60,7 @@ namespace _Scripts
             }
 
             if (chargeBarUI)
-                chargeBarUI.enabled = charge > 0;
+                chargeBarUI.gameObject.SetActive(charge > 0);
         }
 
         private void FireShot()
@@ -61,7 +72,16 @@ namespace _Scripts
 
             charge = 0f;
             if (chargeBarUI)
-                chargeBarUI.fillAmount = 0f;
+            {
+                chargeBarUI.value = 0f;
+
+                Image fillImage = chargeBarUI.fillRect ? chargeBarUI.fillRect.GetComponent<Image>() : null;
+                if (fillImage)
+                    fillImage.color = Color.green;
+            }
+
+            if (aimSystem)
+                aimSystem.SetChargePreview(0f, maxCharge);
         }
     }
 }

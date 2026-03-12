@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace _Scripts
@@ -17,6 +18,8 @@ namespace _Scripts
 
         public bool IsMoving => rb.velocity.magnitude > stopVelocityThreshold;
 
+        public TextMeshProUGUI velocityText;
+
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -24,6 +27,14 @@ namespace _Scripts
 
             startPos = transform.position;
             startRot = transform.rotation;
+        }
+
+        void Update()
+        {
+            if (velocityText)
+            {
+                velocityText.text = $"Velocity: {rb.velocity.magnitude:F2}";
+            }
         }
 
         private void FixedUpdate()
