@@ -93,7 +93,7 @@ public class GolfTerrainManager : MonoBehaviour
         }
         return null;
     }
-
+*
     public Vector3 GetHoleStartPosition(int holeIndex)
     {
         ProceduralTerrainGolf terrain = GetTerrain(holeIndex);
