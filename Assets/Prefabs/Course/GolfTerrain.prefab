@@ -167,8 +167,12 @@ MonoBehaviour:
   nextTerrain: {fileID: 0}
   previousTerrain: {fileID: 0}
   chainIndex: 0
-  terrainMaterial: {fileID: 2100000, guid: 45eb7efec0c8f504285b382733758e52, type: 2}
+  terrainMaterial: {fileID: 2100000, guid: 511dbf3047c568a40828528abe75efd4, type: 2}
   terrainPhysicsMaterial: {fileID: 13400000, guid: a3bc99e42169ef64ebabcaf6372a8003,
     type: 2}
+  generateWalls: 1
+  wallHeight: 10
+  wallThickness: 0.1
+  wallMaterial: {fileID: 0}
   showDebugGizmos: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}

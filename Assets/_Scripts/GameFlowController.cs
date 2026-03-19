@@ -28,10 +28,10 @@ namespace _Scripts
                 ResetTurn();
             }
 
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                ball.transform.position = proceduralTerrainGolf.GetStartWorldPosition();
-            }
+            // if (Input.GetKeyDown(KeyCode.N))
+            // {
+            //     ball.transform.position = proceduralTerrainGolf.GetStartWorldPosition();
+            // }
         }
 
         private void Start()

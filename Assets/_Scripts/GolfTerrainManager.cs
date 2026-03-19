@@ -6,16 +6,24 @@ public class GolfTerrainManager : MonoBehaviour
     [Header("Terrain Prefab")]
     public GameObject terrainPrefab;
 
+    [Header("Course Layout (Grid-Based)")]
+    public TerrainStep[] layout;
+
     [Header("Course Settings")]
-    public int numberOfTerrains = 3;
     public float terrainSpacing = 0f;
-    public Vector3 chainDirection = Vector3.forward; // Direction to place next terrain
 
     [Header("Generation")]
     public bool generateOnStart = true;
     public int startSeed = 0; // 0 is random
 
     private List<ProceduralTerrainGolf> terrains = new List<ProceduralTerrainGolf>();
+
+    [System.Serializable]
+    public struct TerrainStep
+    {
+        public int x; // left/right
+        public int z; // forward/back
+    }
 
     void Start()
     {
@@ -44,23 +52,30 @@ public class GolfTerrainManager : MonoBehaviour
         }
 
         float terrainSize = terrainScript.terrainSize;
-        Vector3 offset = chainDirection.normalized * (terrainSize + terrainSpacing);
+        float spacing = terrainSize + terrainSpacing;
 
-        for (int i = 0; i < numberOfTerrains; i++)
+        for (int i = 0; i < layout.Length; i++)
         {
-            Vector3 position = transform.position + (offset * i);
-            GameObject terrainObj = Instantiate(terrainPrefab, position, Quaternion.identity, transform);
+            TerrainStep step = layout[i];
+
+            Vector3 position = transform.position +
+                new Vector3(step.x * spacing, 0f, step.z * spacing);
+
+            GameObject terrainObj = Instantiate(
+                terrainPrefab,
+                position,
+                Quaternion.identity,
+                transform
+            );
+
             terrainObj.name = $"Terrain{i + 1}";
-            // Layer used for cam collision
+
+            // Layer used for camera collision
             int terrainLayer = LayerMask.NameToLayer("Terrain");
             terrainObj.layer = terrainLayer;
 
-            ProceduralTerrainGolf terrain = terrainObj.GetComponent<ProceduralTerrainGolf>();
-            
-            // if (startSeed != 0)
-            // {
-            //     terrain.seed = startSeed + i;
-            // }
+            ProceduralTerrainGolf terrain =
+                terrainObj.GetComponent<ProceduralTerrainGolf>();
 
             terrains.Add(terrain);
 
@@ -71,46 +86,51 @@ public class GolfTerrainManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Generated {numberOfTerrains} terrain pieces for the golf course!");
+        // Build walls AFTER chaining is complete
+        foreach (var terrain in terrains)
+        {
+            terrain.BuildWalls();
+        }
+
+        Debug.Log($"Generated {layout.Length} terrain pieces for the golf course!");
     }
+
+    
 
     [ContextMenu("Clear Course")]
     public void ClearCourse()
     {
-        // Destroy all child terrain objects
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
             DestroyImmediate(transform.GetChild(i).gameObject);
         }
+
         terrains.Clear();
     }
 
     public ProceduralTerrainGolf GetTerrain(int index)
     {
         if (index >= 0 && index < terrains.Count)
-        {
             return terrains[index];
-        }
+
         return null;
     }
-    
-    public Vector3 GetHoleStartPosition(int holeIndex)
-    {
-        ProceduralTerrainGolf terrain = GetTerrain(holeIndex);
-        if (terrain != null)
-        {
-            return terrain.GetStartWorldPosition();
-        }
-        return Vector3.zero;
-    }
 
-    public Vector3 GetHoleEndPosition(int holeIndex)
-    {
-        ProceduralTerrainGolf terrain = GetTerrain(holeIndex);
-        if (terrain != null)
-        {
-            return terrain.GetHoleWorldPosition();
-        }
-        return Vector3.zero;
-    }
+    // public Vector3 GetHoleStartPosition(int holeIndex)
+    // {
+    //     ProceduralTerrainGolf terrain = GetTerrain(holeIndex);
+    //     if (terrain != null)
+    //         return terrain.GetStartWorldPosition();
+
+    //     return Vector3.zero;
+    // }
+
+    // public Vector3 GetHoleEndPosition(int holeIndex)
+    // {
+    //     ProceduralTerrainGolf terrain = GetTerrain(holeIndex);
+    //     if (terrain != null)
+    //         return terrain.GetHoleWorldPosition();
+
+    //     return Vector3.zero;
+    // }
 }
