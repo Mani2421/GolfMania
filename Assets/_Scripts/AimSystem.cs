@@ -63,8 +63,7 @@ namespace _Scripts
             float mouseX = Input.GetAxis("Mouse X");
     
             if (invertMouse) mouseX *= -1;
-
-            // Use unscaledDeltaTime so aiming feels smooth even if physics slows down
+            
             currentYRotation += mouseX * rotationSpeed * Time.unscaledDeltaTime;
     
             // Apply rotation
