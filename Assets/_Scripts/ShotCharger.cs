@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +66,7 @@ namespace _Scripts
 
         private void FireShot()
         {
+            // Get the forward vector of our AimSystem pivot
             Vector3 aimDir = aimSystem.AimDirection;
 
             ball.Shoot(aimDir, charge);
@@ -82,6 +84,14 @@ namespace _Scripts
 
             if (aimSystem)
                 aimSystem.SetChargePreview(0f, maxCharge);
+            
+            // Inside ShotCharger.cs -> FireShot()
+            var impulse = ball.GetComponent<CinemachineImpulseSource>();
+            if (impulse != null) 
+            {
+                // Shake strength based on how high the charge was
+                impulse.GenerateImpulse(charge / maxCharge); 
+            }
         }
     }
 }

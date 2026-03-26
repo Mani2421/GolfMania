@@ -19,6 +19,10 @@ namespace _Scripts
         public bool IsMoving => rb.velocity.magnitude > stopVelocityThreshold;
 
         public TextMeshProUGUI velocityText;
+        
+        [Header("Stopping Logic")]
+        public float dragMultiplier = 0.95f; // How quickly to bleed velocity when slow
+        public float slowSpeedThreshold = 1.0f; // Velocity at which extra friction applies
 
         void Awake()
         {
@@ -39,6 +43,23 @@ namespace _Scripts
 
         private void FixedUpdate()
         {
+            // 1. Manually bleed velocity if the ball is rolling too slowly
+            if (rb.velocity.magnitude < slowSpeedThreshold && rb.velocity.magnitude > 0)
+            {
+                // Reduce velocity by a percentage every fixed frame
+                rb.velocity *= dragMultiplier;
+                rb.angularVelocity *= dragMultiplier;
+
+                // 2. Force a hard stop if it's below your threshold
+                if (rb.velocity.magnitude < stopVelocityThreshold)
+                {
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    rb.Sleep(); // Force the physics engine to stop calculating
+                }
+            }
+
+            // 3. Trigger the stopped event
             if (!IsMoving && rb.IsSleeping())
             {
                 OnStopped?.Invoke();
@@ -57,8 +78,15 @@ namespace _Scripts
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
+            // Returns to the position stored when the game started
             transform.position = startPos;
             transform.rotation = startRot;
+        }
+        
+        public void SetNewStartPosition(Vector3 newPos)
+        {
+            startPos = newPos;
+            startRot = transform.rotation;
         }
 
         private void OnTriggerEnter(Collider other)

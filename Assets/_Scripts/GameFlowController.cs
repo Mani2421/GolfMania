@@ -1,6 +1,5 @@
 using System;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts
@@ -15,53 +14,55 @@ namespace _Scripts
         public CinemachineVirtualCamera aimCam;
         public CinemachineVirtualCamera followCam;
 
-        public ProceduralTerrainGolf proceduralTerrainGolf;
-
         private bool shotFired;
 
+        private void Start()
+        {
+            // Initial teleport to the start prefab
+            MoveBallToStart();
+        }
 
         private void Update()
         {
-            // TODO: MAYBE MAKE A DEBUG MANAGER FOR TESTING
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ResetTurn();
             }
 
-            // if (Input.GetKeyDown(KeyCode.N))
-            // {
-            //     ball.transform.position = proceduralTerrainGolf.GetStartWorldPosition();
-            // }
+            // Keep the AimSystem (camera pivot) at the ball's position
+            if (ball != null)
+            {
+                aimSystem.transform.position = ball.transform.position;
+            }
         }
 
-        private void Start()
+        private void MoveBallToStart()
         {
-            // TODO: On level start teleport the ball to start position.
-            proceduralTerrainGolf = FindFirstObjectByType<ProceduralTerrainGolf>();
+            GameObject startPoint = GameObject.Find("StartPoint");
+            if (startPoint != null && ball != null)
+            {
+                ball.transform.position = startPoint.transform.position + Vector3.up * 0.5f;
+                // Capture this as the very first 'save point'
+                ball.SetNewStartPosition(ball.transform.position); 
+            }
         }
-
 
         private void OnEnable()
         {
             shotCharger.OnShotFired += HandleShotFired;
             ball.OnStopped += HandleBallStopped;
-            ball.OnHoleEntered += HandleHoleEntered;
         }
 
         private void OnDisable()
         {
             shotCharger.OnShotFired -= HandleShotFired;
             ball.OnStopped -= HandleBallStopped;
-            ball.OnHoleEntered -= HandleHoleEntered;
         }
 
         private void HandleShotFired(Vector3 dir, float force)
         {
             shotFired = true;
-
-            aimSystem.enabled = false;
             aimSystem.SetIndicatorVisible(false);
-
             aimCam.Priority = 0;
             followCam.Priority = 1;
         }
@@ -70,19 +71,19 @@ namespace _Scripts
         {
             if (!shotFired) return;
 
+            // KEY CHANGE: Save the new position so we take the next shot from here
+            ball.SetNewStartPosition(ball.transform.position);
+
             ResetTurn();
-        }
-        private void HandleHoleEntered()
-        {
-            // TODO: HANDLE PLAYER SCORE HERE.
-            Debug.Log("Player scored!");
         }
 
         private void ResetTurn()
         {
             shotFired = false;
-
-            ball.ResetBall();
+            
+            // This now returns the ball to where it just stopped, not the start of the level
+            ball.ResetBall(); 
+            
             aimSystem.ResetAim();
             aimSystem.enabled = true;
             aimSystem.SetIndicatorVisible(true);

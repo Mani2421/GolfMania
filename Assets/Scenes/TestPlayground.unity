@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 429948638}
   - component: {fileID: 429948637}
   - component: {fileID: 429948641}
+  - component: {fileID: 429948642}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -479,6 +480,59 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &429948642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429948636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &601621761
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +823,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &920516039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920516041}
+  - component: {fileID: 920516040}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &920516040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920516039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c61341d39e5b7f49904219236801170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followCam: {fileID: 3415231654526427643}
+  ballRigidbody: {fileID: 493819152352122422}
+  baseFOV: 40
+  maxFOV: 60
+  speedThreshold: 20
+--- !u!4 &920516041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920516039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.237183, y: 50.288235, z: -27.878944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967368584
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +1040,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005234342}
   m_CullTransparentMesh: 1
+--- !u!1 &1032182028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294818825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1044562235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,13 +1498,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainPrefab: {fileID: 7785039639266981894, guid: bc727cf393ec7ae4392c6a1a10d09746,
     type: 3}
-  startPrefab: {fileID: 0}
-  holePrefab: {fileID: 0}
+  startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
+    type: 3}
+  holePrefab: {fileID: 1032182028}
   layout:
   - {x: 0, y: 0}
-  - {x: 0, y: 0}
   - {x: 0, y: 1}
-  - {x: -1, y: 0}
+  - {x: 0, y: 2}
+  - {x: -1, y: 2}
+  - {x: -1, y: 3}
+  - {x: -2, y: 3}
   terrainSize: 20
 --- !u!4 &1389942736
 Transform:
@@ -1830,8 +1942,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1767475142}
   - component: {fileID: 1767475143}
-  - component: {fileID: 1767475145}
   - component: {fileID: 1767475146}
+  - component: {fileID: 1767475147}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1866,28 +1978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1767475145
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767475141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 5, z: -5}
-  m_XDamping: 1
-  m_YDamping: 0
-  m_ZDamping: 0
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1767475146
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1908,13 +1998,35 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.05
+  m_DeadZoneHeight: 0.05
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!114 &1767475147
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767475141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 5
+  m_FollowOffset: {x: 0, y: 5, z: -5}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &2068561557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,7 +3133,6 @@ MonoBehaviour:
   shotCharger: {fileID: 9027042267178706220}
   aimCam: {fileID: 185035781135490611}
   followCam: {fileID: 3415231654526427643}
-  proceduralTerrainGolf: {fileID: 0}
 --- !u!1 &6936372103518052698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,8 +3205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359959640228061263}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34494692, y: -0.40005058, z: 0.1657067, w: 0.832774}
-  m_LocalPosition: {x: 204.35312, y: 5.073, z: -338.146}
+  m_LocalRotation: {x: 0.37981647, y: -0.1128826, z: 0.04675755, w: 0.9169573}
+  m_LocalPosition: {x: 201.66267, y: 5.073, z: -339.8717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3139,6 +3250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopVelocityThreshold: 0.05
   velocityText: {fileID: 2068561559}
+  dragMultiplier: 0.95
+  slowSpeedThreshold: 1
 --- !u!1 &8954755495079490586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,6 +3286,7 @@ GameObject:
   - component: {fileID: 9027042267178706219}
   - component: {fileID: 9027042267178706218}
   - component: {fileID: 9027042267178706220}
+  - component: {fileID: 9027042267178706221}
   m_Layer: 6
   m_Name: Ball
   m_TagString: Untagged
@@ -3193,8 +3307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 120
-  minAngle: -90
-  maxAngle: 90
+  invertMouse: 0
   indicatorLength: 3
   indicatorSegments: 3
   indicatorHeightOffset: 0.06
@@ -3205,11 +3318,7 @@ MonoBehaviour:
   maxPreviewForce: 40
   lowChargeColor: {r: 0.2, g: 0.85, b: 1, a: 0.95}
   highChargeColor: {r: 1, g: 0.55, b: 0.15, a: 1}
-  widthStart: 0.12
-  widthEnd: 0.03
-  pulseWidth: 1
-  pulseAmplitude: 0.1
-  pulseSpeed: 3
+  ball: {fileID: 8006286789482075580}
 --- !u!120 &9027042267178706219
 LineRenderer:
   serializedVersion: 2
@@ -3331,6 +3440,66 @@ MonoBehaviour:
   chargeBarUI: {fileID: 1220353981}
   aimSystem: {fileID: 9027042267178706218}
   ball: {fileID: 8006286789482075580}
+--- !u!114 &9027042267178706221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9027042267178706217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3346,6 +3515,7 @@ SceneRoots:
   - {fileID: 1373384007}
   - {fileID: 1389942736}
   - {fileID: 2706528019321441177}
+  - {fileID: 920516041}
   - {fileID: 6423233845564828656}
   - {fileID: 7460916769673999249}
   - {fileID: 3434366615310538386}
