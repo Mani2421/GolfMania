@@ -1389,18 +1389,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainPrefab: {fileID: 7785039639266981894, guid: bc727cf393ec7ae4392c6a1a10d09746,
     type: 3}
+  startPrefab: {fileID: 0}
+  holePrefab: {fileID: 0}
   layout:
-  - x: 0
-    z: 0
-  - x: 0
-    z: 1
-  - x: 0
-    z: 2
-  - x: -1
-    z: 2
-  terrainSpacing: 0
-  generateOnStart: 1
-  startSeed: 0
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: -1, y: 0}
+  terrainSize: 20
 --- !u!4 &1389942736
 Transform:
   m_ObjectHideFlags: 0
