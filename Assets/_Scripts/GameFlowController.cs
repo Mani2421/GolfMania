@@ -1,6 +1,7 @@
 using System;
 using Cinemachine;
 using UnityEngine;
+using TMPro; // Required for TextMeshPro
 
 namespace _Scripts
 {
@@ -10,16 +11,19 @@ namespace _Scripts
         public AimSystem aimSystem;
         public BallController ball;
         public ShotCharger shotCharger;
+        public TextMeshProUGUI strokeText; // Assign your UI text here
 
+        [Header("Cameras")]
         public CinemachineVirtualCamera aimCam;
         public CinemachineVirtualCamera followCam;
 
         private bool shotFired;
+        private int strokeCount = 0; // The counter
 
         private void Start()
         {
-            // Initial teleport to the start prefab
             MoveBallToStart();
+            UpdateStrokeUI();
         }
 
         private void Update()
@@ -29,7 +33,6 @@ namespace _Scripts
                 ResetTurn();
             }
 
-            // Keep the AimSystem (camera pivot) at the ball's position
             if (ball != null)
             {
                 aimSystem.transform.position = ball.transform.position;
@@ -42,7 +45,6 @@ namespace _Scripts
             if (startPoint != null && ball != null)
             {
                 ball.transform.position = startPoint.transform.position + Vector3.up * 0.5f;
-                // Capture this as the very first 'save point'
                 ball.SetNewStartPosition(ball.transform.position); 
             }
         }
@@ -62,6 +64,11 @@ namespace _Scripts
         private void HandleShotFired(Vector3 dir, float force)
         {
             shotFired = true;
+            
+            // Increment and Update UI
+            strokeCount++;
+            UpdateStrokeUI();
+
             aimSystem.SetIndicatorVisible(false);
             aimCam.Priority = 0;
             followCam.Priority = 1;
@@ -70,18 +77,13 @@ namespace _Scripts
         private void HandleBallStopped()
         {
             if (!shotFired) return;
-
-            // KEY CHANGE: Save the new position so we take the next shot from here
             ball.SetNewStartPosition(ball.transform.position);
-
             ResetTurn();
         }
 
         private void ResetTurn()
         {
             shotFired = false;
-            
-            // This now returns the ball to where it just stopped, not the start of the level
             ball.ResetBall(); 
             
             aimSystem.ResetAim();
@@ -90,6 +92,13 @@ namespace _Scripts
 
             aimCam.Priority = 1;
             followCam.Priority = 0;
+        }
+        private void UpdateStrokeUI()
+        {
+            if (strokeText != null)
+            {
+                strokeText.text = $"Strokes: {strokeCount}";
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace _Scripts
     public class AimSystem : MonoBehaviour
     {
         [Header("Aim Settings")]
-        public float rotationSpeed = 100f; // Increase this value now that we use DeltaTime
+        public float rotationSpeed = 100f;
         public bool invertMouse = false;
 
         [Header("Indicator Settings")]
@@ -52,8 +52,8 @@ namespace _Scripts
             float mouseX = Input.GetAxis("Mouse X");
             currentYRotation += mouseX * rotationSpeed * Time.unscaledDeltaTime;
 
-            // IMPORTANT: Only apply Y rotation. This keeps the pivot 
-            // from ever tilting or rolling like the ball does.
+            // Only apply Y rotation. This keeps the pivot 
+            //  from ever tilting or rolling like the ball does.
             transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);
         }
 

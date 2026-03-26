@@ -66,7 +66,7 @@ namespace _Scripts
 
         private void FireShot()
         {
-            // Get the forward vector of our AimSystem pivot
+            // Get the forward vector of AimSystem pivot
             Vector3 aimDir = aimSystem.AimDirection;
 
             ball.Shoot(aimDir, charge);
@@ -85,7 +85,6 @@ namespace _Scripts
             if (aimSystem)
                 aimSystem.SetChargePreview(0f, maxCharge);
             
-            // Inside ShotCharger.cs -> FireShot()
             var impulse = ball.GetComponent<CinemachineImpulseSource>();
             if (impulse != null) 
             {

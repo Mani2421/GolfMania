@@ -56,15 +56,15 @@ public class ProceduralTerrainGolf : MonoBehaviour
         bool W = AllTerrains.ContainsKey(gridPosition + Vector2Int.left);
         bool E = AllTerrains.ContainsKey(gridPosition + Vector2Int.right);
 
-        // 1. Straight Walls
+        // Straight Walls
         if (!N) CreateWall("Wall_N", new Vector3(s/2, h/2, s), new Vector3(s, h, t), 0);
         if (!S) CreateWall("Wall_S", new Vector3(s/2, h/2, 0), new Vector3(s, h, t), 0);
         if (!W) CreateWall("Wall_W", new Vector3(0, h/2, s/2), new Vector3(t, h, s), 0);
         if (!E) CreateWall("Wall_E", new Vector3(s, h/2, s/2), new Vector3(t, h, s), 0);
 
-        // 2. Diagonal "Backwards Triangle" Corners
-        // Scale for the diagonal: wallThickness * 2 ensures it covers the gap
-        float diagScale = t * 3f; 
+        // Diagonal "Backwards Triangle" Corners
+        // Scale for the diagonal: wallThickness * 2 to make it covers the gap
+        float diagScale = t * 10f; 
         Vector3 cornerScale = new Vector3(diagScale, h, diagScale);
 
         if (!N && !W) CreateWall("Corner_NW", new Vector3(0, h/2, s), cornerScale, 45);
@@ -87,6 +87,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     public void SpawnAtCenter(GameObject prefab, string name)
     {
         if (prefab == null) return;
+        // TODO: FIND A WAY TO SPAWN ON THE TERRAIN SURFACE RATHER THAN A FIXED HEIGHT
         Instantiate(prefab, transform.position + new Vector3(terrainSize/2, 0.2f, terrainSize/2), Quaternion.identity, transform).name = name;
     }
 

@@ -21,9 +21,8 @@ namespace _Scripts
         public TextMeshProUGUI velocityText;
         
         [Header("Stopping Logic")]
-        public float dragMultiplier = 0.95f; // How quickly to bleed velocity when slow
-        public float slowSpeedThreshold = 1.0f; // Velocity at which extra friction applies
-
+        public float dragMultiplier = 0.95f;
+        public float slowSpeedThreshold = 1.0f;
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -43,14 +42,14 @@ namespace _Scripts
 
         private void FixedUpdate()
         {
-            // 1. Manually bleed velocity if the ball is rolling too slowly
+            // Manually bleed velocity if the ball is rolling too slowly
             if (rb.velocity.magnitude < slowSpeedThreshold && rb.velocity.magnitude > 0)
             {
                 // Reduce velocity by a percentage every fixed frame
                 rb.velocity *= dragMultiplier;
                 rb.angularVelocity *= dragMultiplier;
 
-                // 2. Force a hard stop if it's below your threshold
+                // Force a hard stop if it's below your threshold
                 if (rb.velocity.magnitude < stopVelocityThreshold)
                 {
                     rb.velocity = Vector3.zero;
