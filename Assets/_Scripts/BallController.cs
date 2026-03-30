@@ -20,8 +20,13 @@ namespace _Scripts
 
         public TextMeshProUGUI velocityText;
         
+        [Header("Audio")]
+        public AudioSource rollSource; // Loop this one!
+        public AudioClip hitSound;
+        public float minHitVelocity = 1f;
+        
         [Header("Stopping Logic")]
-        public float dragMultiplier = 0.95f;
+        public float dragMultiplier = 0.8f;
         public float slowSpeedThreshold = 1.0f;
         void Awake()
         {
@@ -37,6 +42,17 @@ namespace _Scripts
             if (velocityText)
             {
                 velocityText.text = $"Velocity: {rb.velocity.magnitude:F2}";
+            }
+        }
+        
+        private void OnCollisionEnter(Collision collision)
+        {
+            float impactVelocity = collision.relativeVelocity.magnitude;
+
+            if (impactVelocity > minHitVelocity)
+            {
+                // Play hit sound at the point of impact
+                AudioSource.PlayClipAtPoint(hitSound, collision.contacts[0].point, impactVelocity / 20f);
             }
         }
 
@@ -57,8 +73,20 @@ namespace _Scripts
                     rb.Sleep(); // Force the physics engine to stop calculating
                 }
             }
-
-            // 3. Trigger the stopped event
+            
+            // Rolling Sound Logic
+            if (IsMoving && rb.velocity.magnitude > 0.2f)
+            {
+                if (!rollSource.isPlaying) rollSource.Play();
+                // Pitch shifts higher as the ball goes faster
+                rollSource.pitch = Mathf.Lerp(0.5f, 1.5f, rb.velocity.magnitude / 15f);
+                rollSource.volume = Mathf.Lerp(0f, 1f, rb.velocity.magnitude / 5f);
+            }
+            else
+            {
+                rollSource.Stop();
+            }
+            
             if (!IsMoving && rb.IsSleeping())
             {
                 OnStopped?.Invoke();

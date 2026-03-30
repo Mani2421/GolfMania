@@ -9,8 +9,8 @@ public class ProceduralTerrainGolf : MonoBehaviour
     
     [Header("Visuals")]
     public Material wallMaterial;
-    public float wallHeight = 2f;
-    public float wallThickness = 0.4f;
+    public float wallHeight = 10f;
+    public float wallThickness = 0.1f;
 
     [Header("Terrain Detail")]
     public int resolution = 129;
@@ -64,7 +64,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
 
         // Diagonal "Backwards Triangle" Corners
         // Scale for the diagonal: wallThickness * 2 to make it covers the gap
-        float diagScale = t * 10f; 
+        float diagScale = t * 50f;
         Vector3 cornerScale = new Vector3(diagScale, h, diagScale);
 
         if (!N && !W) CreateWall("Corner_NW", new Vector3(0, h/2, s), cornerScale, 45);
@@ -88,7 +88,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     {
         if (prefab == null) return;
         // TODO: FIND A WAY TO SPAWN ON THE TERRAIN SURFACE RATHER THAN A FIXED HEIGHT
-        Instantiate(prefab, transform.position + new Vector3(terrainSize/2, 0.2f, terrainSize/2), Quaternion.identity, transform).name = name;
+        Instantiate(prefab, transform.position + new Vector3(terrainSize/2, 0f, terrainSize/2), Quaternion.identity, transform).name = name;
     }
 
     private float[,] StitchToNeighbors(float[,] heights)

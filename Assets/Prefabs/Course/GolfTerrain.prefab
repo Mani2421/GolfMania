@@ -106,73 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14db57cd7e3b8945a1704eecb01ee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightmapResolution: 257
+  gridPosition: {x: 0, y: 0}
   terrainSize: 30
-  maxHeight: 2.5
-  noiseLayers:
-  - scale: 5
-    amplitude: 0.5
-    octaves: 2
-    persistence: 0.6
-    offset: {x: 0, y: 0}
-  - scale: 15
-    amplitude: 0.2
-    octaves: 1
-    persistence: 0.4
-    offset: {x: 0, y: 0.02}
-  - scale: 30
-    amplitude: 0.05
-    octaves: 1
-    persistence: 0.3
-    offset: {x: 0, y: 0}
-  smoothTerrain: 1
-  smoothingPasses: 4
-  startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
-    type: 3}
-  holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
-    type: 3}
-  startPosition: {x: 18.28, y: 0, z: 2}
-  holePosition: {x: 18, y: 0, z: 18}
-  flattenRadius: 1.8
-  flattenCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  obstaclePrefabs: []
-  obstacleCount: 3
-  obstacleHeightOffset: 0.1
-  minDistanceFromTargets: 2
-  minDistanceBetweenObstacles: 1.5
-  isChained: 0
-  nextTerrain: {fileID: 0}
-  previousTerrain: {fileID: 0}
-  chainIndex: 0
-  terrainMaterial: {fileID: 2100000, guid: 511dbf3047c568a40828528abe75efd4, type: 2}
-  terrainPhysicsMaterial: {fileID: 13400000, guid: a3bc99e42169ef64ebabcaf6372a8003,
-    type: 2}
-  generateWalls: 1
+  wallMaterial: {fileID: 0}
   wallHeight: 10
   wallThickness: 0.1
-  wallMaterial: {fileID: 0}
-  showDebugGizmos: 1
-  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+  resolution: 129
+  maxHeight: 0
+  edgeTop: []
+  edgeBottom: []
+  edgeLeft: []
+  edgeRight: []

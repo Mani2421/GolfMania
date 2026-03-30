@@ -80,6 +80,16 @@ namespace _Scripts
             ball.SetNewStartPosition(ball.transform.position);
             ResetTurn();
         }
+        
+        private void HandleHoleEntered()
+        {
+            Debug.Log("Player scored!");
+            // Call our global manager
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.levelWinSound);
+            }
+        }
 
         private void ResetTurn()
         {
