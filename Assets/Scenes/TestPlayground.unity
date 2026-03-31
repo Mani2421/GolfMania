@@ -2666,17 +2666,17 @@ PrefabInstance:
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.27741
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -64.07002
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
@@ -2712,6 +2712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520968514978997700, guid: 4fce47b91b374624fb6bd8ae39c940f9,
+        type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3625,7 +3630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopVelocityThreshold: 0.05
   velocityText: {fileID: 2068561559}
-  rollSource: {fileID: 0}
+  rollSource: {fileID: 9027042267178706222}
   hitSound: {fileID: 8300000, guid: baef6e070cad41047a13ec074f1f8f63, type: 3}
   minHitVelocity: 1
   dragMultiplier: 0.8

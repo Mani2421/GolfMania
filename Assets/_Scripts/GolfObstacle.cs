@@ -24,6 +24,7 @@ public class GolfObstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) // Assuming your ball is tagged Player
         {
+            Debug.Log("Feedback ?");
             PlayFeedback(collision.contacts[0].point);
         }
     }

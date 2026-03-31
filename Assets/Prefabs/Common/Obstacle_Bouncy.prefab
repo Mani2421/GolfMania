@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2526878788639486375}
   - component: {fileID: 1957875564112289637}
   - component: {fileID: 8650985338026269955}
+  - component: {fileID: 3520968514978997700}
   m_Layer: 0
   m_Name: Obstacle_Bouncy
   m_TagString: Obstacle
@@ -102,7 +103,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -120,4 +121,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 0}
-  bounceSound: {fileID: 0}
+  bounceSound: {fileID: 8300000, guid: 902c5fdef00883b438a2622badb84b6a, type: 3}
+--- !u!65 &3520968514978997700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636520232475312276}
+  m_Material: {fileID: 13400000, guid: 8ccbe63549076054688973f60e20f841, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
