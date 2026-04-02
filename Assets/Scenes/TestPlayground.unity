@@ -2666,7 +2666,7 @@ PrefabInstance:
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
@@ -2676,7 +2676,7 @@ PrefabInstance:
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.94
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2465631248012450066, guid: 4fce47b91b374624fb6bd8ae39c940f9,
         type: 3}
@@ -2712,11 +2712,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3520968514978997700, guid: 4fce47b91b374624fb6bd8ae39c940f9,
-        type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3673,7 +3668,7 @@ GameObject:
   - component: {fileID: 9027042267178706222}
   m_Layer: 6
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
