@@ -88,7 +88,7 @@ public class ProceduralTerrainGolf : MonoBehaviour
     {
         if (prefab == null) return;
         // TODO: FIND A WAY TO SPAWN ON THE TERRAIN SURFACE RATHER THAN A FIXED HEIGHT
-        Instantiate(prefab, transform.position + new Vector3(terrainSize/2, 0f, terrainSize/2), Quaternion.identity, transform).name = name;
+        Instantiate(prefab, transform.position + new Vector3(terrainSize/2, -0.5f, terrainSize/2), Quaternion.identity, transform).name = name;
     }
 
     private float[,] StitchToNeighbors(float[,] heights)
