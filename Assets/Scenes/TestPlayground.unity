@@ -1804,7 +1804,7 @@ MonoBehaviour:
     type: 3}
   startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
     type: 3}
-  holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
+  holePrefab: {fileID: 3116945050812715443, guid: b265d45b737be274fb9c2e13069beab8,
     type: 3}
   layout:
   - {x: 0, y: 0}
@@ -2906,6 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7227cfb9c8515438e8f05b5f36ab0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GolfTerrainManager: {fileID: 1389942735}
 --- !u!33 &3073333345183137653
 MeshFilter:
   m_ObjectHideFlags: 0

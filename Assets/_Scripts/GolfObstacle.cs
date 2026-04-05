@@ -22,7 +22,7 @@ public class GolfObstacle : MonoBehaviour
     // This handles the "Logic" of hitting an obstacle
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) // Assuming your ball is tagged Player
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Feedback ?");
             PlayFeedback(collision.contacts[0].point);
