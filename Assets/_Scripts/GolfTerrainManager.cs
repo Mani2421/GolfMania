@@ -13,9 +13,14 @@ public class GolfTerrainManager : MonoBehaviour
     public float terrainSize = 20f;
 
     private List<ProceduralTerrainGolf> terrains = new List<ProceduralTerrainGolf>();
+    
+    [Header("Obstacle Settings")]
+    public GameObject[] obstaclePrefabs;
+    [Range(0, 1)] public float spawnChance = 0.3f;
+    public int maxObstaclesPerTile = 2;
 
     void Start() => GenerateCourse();
-
+    
     [ContextMenu("Generate Course")]
     public void GenerateCourse()
     {
@@ -27,7 +32,7 @@ public class GolfTerrainManager : MonoBehaviour
         {
             Vector3 pos = transform.position + new Vector3(layout[i].x * terrainSize, 0, layout[i].y * terrainSize);
             GameObject obj = Instantiate(terrainPrefab, pos, Quaternion.identity, transform);
-            
+        
             ProceduralTerrainGolf script = obj.GetComponent<ProceduralTerrainGolf>();
             script.gridPosition = layout[i];
             script.terrainSize = terrainSize;
@@ -42,11 +47,19 @@ public class GolfTerrainManager : MonoBehaviour
         // PASS 3: Walls & Diagonal Corners
         foreach (var t in terrains) t.BuildWallsAndCorners();
 
-        // PASS 4: Spawning
+        // PASS 4: Spawning (Start and Goal)
         if (terrains.Count > 0)
         {
             terrains[0].SpawnAtCenter(startPrefab, "StartPoint");
             terrains[terrains.Count - 1].SpawnAtCenter(holePrefab, "GoalPoint");
+        }
+
+        // PASS 5: Dynamic Obstacles
+        // We start at index 1 and end at Count - 2 to avoid spawning obstacles 
+        // directly on top of the Start or the Hole.
+        for (int i = 1; i < terrains.Count - 1; i++)
+        {
+            terrains[i].SpawnObstacles(obstaclePrefabs, spawnChance, maxObstaclesPerTile);
         }
     }
 

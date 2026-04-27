@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &205818449199304166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 219452576267222324}
+  - component: {fileID: 5676123460274569269}
+  m_Layer: 0
+  m_Name: GolfTerrainManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &219452576267222324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205818449199304166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5676123460274569269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205818449199304166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a0e8c534564ec6a867684e053f9ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainPrefab: {fileID: 7785039639266981894, guid: bc727cf393ec7ae4392c6a1a10d09746,
+    type: 3}
+  startPrefab: {fileID: 1274067251745135045, guid: 1dcadb3f8c48c274396d101beaca95a8,
+    type: 3}
+  holePrefab: {fileID: 1044915014327870122, guid: 47569835aebfc154094478c5c092680d,
+    type: 3}
+  layout:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  terrainSize: 20
+  obstaclePrefabs:
+  - {fileID: 8718153253266738622, guid: dd3a00f0f0b4d6d4783f3a49710424a0, type: 3}
+  spawnChance: 0.3
+  maxObstaclesPerTile: 2

@@ -114,6 +114,35 @@ public class ProceduralTerrainGolf : MonoBehaviour
         }
         return heights;
     }
+    
+
+    public void SpawnObstacles(GameObject[] prefabs, float chance, int max)
+    {
+        if (prefabs == null || prefabs.Length == 0) return;
+
+        Terrain terrain = GetComponent<Terrain>();
+
+        for (int i = 0; i < max; i++)
+        {
+            if (Random.value > chance) continue;
+
+            // Pick a random prefab
+            GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
+
+            // Pick a random local position (staying away from the very edges/walls)
+            float localX = Random.Range(terrainSize * 0.15f, terrainSize * 0.85f);
+            float localZ = Random.Range(terrainSize * 0.15f, terrainSize * 0.85f);
+        
+            Vector3 worldPos = transform.position + new Vector3(localX, 0, localZ);
+
+            // FIX FOR TODO: Use SampleHeight to stick the object to the perlin noise surface
+            float y = terrain.SampleHeight(worldPos) + transform.position.y;
+            worldPos.y = y;
+
+            GameObject obs = Instantiate(prefab, worldPos, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
+            obs.name = "DynamicObstacle";
+        }
+    }
 
     private void CaptureEdges(float[,] heights)
     {
