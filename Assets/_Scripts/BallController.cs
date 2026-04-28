@@ -21,7 +21,7 @@ namespace _Scripts
         public TextMeshProUGUI velocityText;
         
         [Header("Audio")]
-        public AudioSource rollSource; // Loop this one!
+        public AudioSource rollSource;
         public AudioClip hitSound;
         public float minHitVelocity = 1f;
         

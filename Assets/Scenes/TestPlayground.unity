@@ -845,7 +845,7 @@ Transform:
   m_GameObject: {fileID: 429948636}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
-  m_LocalPosition: {x: 200.45, y: 3.073, z: -340.021}
+  m_LocalPosition: {x: 5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1350,7 +1350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &967368585
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -3541,7 +3541,7 @@ Transform:
   m_GameObject: {fileID: 5035656335839605903}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26693365, y: 0, z: 0, w: 0.96371496}
-  m_LocalPosition: {x: 200.45, y: 3.073, z: -340.021}
+  m_LocalPosition: {x: 5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4018,7 +4018,7 @@ Transform:
   m_GameObject: {fileID: 9027042267178706217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 200.45, y: 0.073, z: -335.021}
+  m_LocalPosition: {x: 5, y: 0.5, z: 5}
   m_LocalScale: {x: 0.42, y: 0.42, z: 0.42}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4058,8 +4058,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359959640228061263}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37981647, y: -0.1128826, z: 0.04675755, w: 0.9169573}
-  m_LocalPosition: {x: 201.66267, y: 5.073, z: -339.8717}
+  m_LocalRotation: {x: 0.36553842, y: 0.2734385, z: -0.113261946, w: 0.88248783}
+  m_LocalPosition: {x: 2.1729221, y: 5.5, z: 0.87596893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4147,13 +4147,14 @@ MonoBehaviour:
   layout:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
+  - {x: 1, y: -1}
+  - {x: 1, y: -2}
+  - {x: 1, y: -3}
   terrainSize: 20
+  levelLength: 5
   obstaclePrefabs:
   - {fileID: 8718153253266738622, guid: dd3a00f0f0b4d6d4783f3a49710424a0, type: 3}
-  spawnChance: 0.3
-  maxObstaclesPerTile: 2
+  obstacleChance: 0.3
 --- !u!4 &8469762314076738257
 Transform:
   m_ObjectHideFlags: 0

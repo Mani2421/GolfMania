@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
   terrainSize: 30
-  wallMaterial: {fileID: 0}
+  wallMaterial: {fileID: 2100000, guid: c17ea0d04180ec6488b16f6be80a8957, type: 2}
   wallHeight: 10
   wallThickness: 0.1
   resolution: 129

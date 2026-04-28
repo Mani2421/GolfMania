@@ -1,8 +1,8 @@
 using System;
 using Cinemachine;
 using UnityEngine;
-using TMPro; // Required for Stroke and Win UI
-using UnityEngine.SceneManagement; // Required for Restarting
+using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts
 {
@@ -42,25 +42,25 @@ namespace _Scripts
 
         private void Update()
         {
-            // 1. Manual Reset
+            // Manual Reset
             if (Input.GetKeyDown(KeyCode.R) && !isLevelWon)
             {
                 ResetTurn();
             }
 
-            // 2. Out of Bounds Check
+            // Out of Bounds Check
             if (ball != null && ball.transform.position.y < -10f)
             {
                 ResetTurn();
             }
 
-            // 3. Sync Aim Pivot to Ball Position
+            // Sync Aim Pivot to Ball Position
             if (ball != null)
             {
                 aimSystem.transform.position = ball.transform.position;
             }
 
-            // 4. Cinematic Win Camera
+            // Cinematic Win Camera
             if (isLevelWon)
             {
                 aimSystem.transform.Rotate(Vector3.up, winCameraRotationSpeed * Time.deltaTime);
