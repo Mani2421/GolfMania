@@ -26,6 +26,9 @@ namespace _Scripts
         private LineRenderer lineRenderer;
         public BallController ball;
 
+        // Added for Sensitivity
+        private float sensitivityMultiplier = 10f;
+
         public Vector3 AimDirection => transform.forward;
 
         void Awake()
@@ -34,6 +37,8 @@ namespace _Scripts
             lineRenderer.useWorldSpace = true;
             // Initialize rotation to current facing
             currentYRotation = transform.eulerAngles.y;
+            
+            sensitivityMultiplier = PlayerPrefs.GetFloat("MouseSensitivity", 1.0f);
         }
 
         void Update()
@@ -50,7 +55,8 @@ namespace _Scripts
     
             // Handle the Mouse Input
             float mouseX = Input.GetAxis("Mouse X");
-            currentYRotation += mouseX * rotationSpeed * Time.unscaledDeltaTime;
+            
+            currentYRotation += mouseX * rotationSpeed * sensitivityMultiplier * Time.unscaledDeltaTime;
 
             // Only apply Y rotation. This keeps the pivot 
             //  from ever tilting or rolling like the ball does.
@@ -64,7 +70,7 @@ namespace _Scripts
     
             if (invertMouse) mouseX *= -1;
             
-            currentYRotation += mouseX * rotationSpeed * Time.unscaledDeltaTime;
+            currentYRotation += mouseX * rotationSpeed * sensitivityMultiplier * Time.unscaledDeltaTime;
     
             // Apply rotation
             transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);

@@ -1,49 +1,43 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace _Scripts
 {
     public class MainMenuController : MonoBehaviour
     {
-        [Header("Panels")]
-        public GameObject mainMenuPanel;
-        public GameObject hudPanel;
-        
-        [Header("References")]
-        public GameFlowController gameFlow;
-        public AimSystem aimSystem;
+        [Header("Settings")]
+        public Slider sensitivitySlider;
+        private const string SensKey = "MouseSensitivity";
+        public float defaultSensitivity = 1.0f;
 
-        private void Start()
+        void Start()
         {
-            ShowMenu();
+            float savedSens = PlayerPrefs.GetFloat(SensKey, defaultSensitivity);
+            
+            if (sensitivitySlider != null)
+            {
+                sensitivitySlider.value = savedSens;
+                
+                sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
+            }
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        
+
+        public void SetSensitivity(float value)
+        {
+            PlayerPrefs.SetFloat(SensKey, value);
+            PlayerPrefs.Save();
         }
 
         public void PlayGame()
         {
-            mainMenuPanel.SetActive(false);
-            hudPanel.SetActive(true);
-            
-            // Enable game systems
-            aimSystem.enabled = true;
-            aimSystem.SetIndicatorVisible(true);
-            
-            // Lock cursor for gameplay
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-        public void ShowMenu()
-        {
-            mainMenuPanel.SetActive(true);
-            hudPanel.SetActive(false);
-            
-            // Disable gameplay systems
-            aimSystem.enabled = false;
-            aimSystem.SetIndicatorVisible(false);
-            
-            // Unlock cursor for menu
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            SceneManager.LoadScene("Main");
         }
 
         public void QuitGame()

@@ -25,6 +25,11 @@ namespace _Scripts
         public GameObject winPanel;
         public TextMeshProUGUI finalStrokeText;
         public TextMeshProUGUI victoryTitleText;
+        
+        [Header("UI - Pause")]
+        public GameObject pausePanel;
+
+        public GameObject settingsPanel;
 
         [Header("Cinematic Settings")]
         public float winCameraRotationSpeed = 15f; 
@@ -42,11 +47,33 @@ namespace _Scripts
 
         private void Update()
         {
+            bool isPaused = pausePanel != null && pausePanel.activeSelf || settingsPanel != null && settingsPanel.activeSelf;
+            
+            if (isPaused)
+            {
+                aimSystem.gameObject.SetActive(false);
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0f;
+                return;
+            }
+            else
+            {
+                aimSystem.gameObject.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1f;
+            }
+            
             // Manual Reset
             if (Input.GetKeyDown(KeyCode.R) && !isLevelWon)
             {
                 ResetTurn();
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pausePanel.SetActive(!pausePanel.activeSelf);
+            }
+            
 
             // Out of Bounds Check
             if (ball != null && ball.transform.position.y < -10f)
@@ -63,6 +90,7 @@ namespace _Scripts
             // Cinematic Win Camera
             if (isLevelWon)
             {
+                Cursor.lockState = CursorLockMode.None;
                 aimSystem.transform.Rotate(Vector3.up, winCameraRotationSpeed * Time.deltaTime);
             }
         }

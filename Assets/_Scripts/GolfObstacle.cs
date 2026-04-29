@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +27,7 @@ public class GolfObstacle : MonoBehaviour
         {
             Debug.Log("Feedback ?");
             PlayFeedback(collision.contacts[0].point);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Temporary reset for testing
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
